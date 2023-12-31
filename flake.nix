@@ -11,6 +11,10 @@
     #   url = "github:Cassin01/wf.nvim";
     #   flake = false;
     # };
+    buffer_manager-nvim = {
+      url = "github:j-morano/buffer_manager.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

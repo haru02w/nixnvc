@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "buffer_manager-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698915257,
+        "narHash": "sha256-a0REAPs0rJIWLvRNZ04ULwjNzH64hYGhrV/+i/9w/TA=",
+        "owner": "j-morano",
+        "repo": "buffer_manager.nvim",
+        "rev": "4fa47504a23d9a94216f02b1d84f7b0a2dbe2b72",
+        "type": "github"
+      },
+      "original": {
+        "owner": "j-morano",
+        "repo": "buffer_manager.nvim",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -36,6 +52,7 @@
     },
     "root": {
       "inputs": {
+        "buffer_manager-nvim": "buffer_manager-nvim",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
       }
