@@ -12,24 +12,74 @@ with final.pkgs.lib; let
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
 
   all-plugins = with pkgs.vimPlugins; [
-    tokyonight-nvim
-    lualine-nvim
-    nvim-web-devicons
-    dressing-nvim
-    (mkNvimPlugin inputs.buffer_manager-nvim "buffer_manager.nvim")
-    nvim-treesitter.withAllGrammars
+    # UI
+    tokyonight-nvim #theme
+    lualine-nvim #statusline
+    # required by oil.nvim
+    nvim-web-devicons #icons
+    dressing-nvim # cool ui
+    noice-nvim # cool cmdline and notifications
 
-    # libs
-    # required by: buffer_manager
+    # CORE
+    nvim-treesitter.withAllGrammars
+    nvim-lspconfig
+    nvim-cmp
+
+    # COMPLETION PLUGINS
+    luasnip
+    friendly-snippets
+    cmp_luasnip
+    lspkind-nvim
+    cmp-nvim-lsp
+    # cmp-nvim-lsp-signature-help
+    cmp-buffer
+    cmp-path
+    cmp-rg
+    cmp-nvim-lua # neovim lua API completion
+    cmp-cmdline
+    cmp-cmdline-history
+
+    # UTILS
+    smart-splits-nvim # manage splits easily
+    (mkNvimPlugin inputs.buffer_manager-nvim 
+      "buffer_manager.nvim") # manage buffers
+    which-key-nvim # see defined mappings
+    eyeliner-nvim # highlight 'f'-key search
+    nvim-spectre # a powerful search replace
+    undotree # build a tree out of history
+    telescope-nvim telescope-fzf-native-nvim # fuzzy finder 
+    presence-nvim # discord rich presence
+    vim-be-good # game to train nvim
+    guess-indent-nvim # set indent options automatically
+    indent-blankline-nvim # nice lines at indent spaces
+    comment-nvim # comment with simple keys
+    nvim-autopairs # auto close brackets when open
+    nvim-ts-autotag # auto close html tags
+    todo-comments-nvim # highlight todo comments
+    oil-nvim # file manager using buffers
+    gitsigns-nvim # git signs at left column
+
+    # LIBS
+    # required by: buffer_manager, telescope
     plenary-nvim 
+    # required by: noice
+    nui-nvim
   ];
 
   extraPackages = with pkgs; [
+    # language servers:
+    nil # nix
+    lua-language-server # lua
+    clang-tools # c/c++
+    nodePackages.pyright # python
+
+    fzf
+    ripgrep
   ];
 in {
   # This is the neovim derivation
   # returned by the overlay
-  nvim-pkg = mkNeovim {
+  nixnvc = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
   };
