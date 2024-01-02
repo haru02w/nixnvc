@@ -30,7 +30,8 @@ keymap('n', 'n', 'nzzzv', { desc = 'next search term' })
 keymap('n', 'N', 'Nzzzv', { desc = 'next search term' })
 
 -- delete without yanking
-keymap({'n', 'v' }, '<leader>d', '"_d', { desc = 'delete without yanking' })
+keymap({'n', 'v' }, 'd', '"_d', { desc = 'delete without yanking' })
+keymap({'n', 'v' }, '<leader>d', 'd', { desc = 'delete' })
 
 -- Paste without losing yanked text
 keymap('x', 'p', 'P', { desc = 'paste without yanking' })
