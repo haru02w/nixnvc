@@ -8,38 +8,38 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- easier save and quit
-keymap('n', '<leader>q', '<cmd>wq<cr>', { desc = 'save and quit' })
+keymap('n', '<leader>q', vim.cmd.wq, { desc = 'save and quit' })
 
 -- Split panes
 keymap('n', '<leader>\\', vim.cmd.sp, { desc = 'horizontal split' })
 keymap('n', '<leader>|', vim.cmd.vs, { desc = 'vertical split' })
 
 -- Move lines around
-keymap('v', '<C-j>', ':m \'>+1<CR>gv=gv', { desc = 'move text down' })
-keymap('v', '<C-k>', ':m \'<-2<CR>gv=gv', { desc = 'move text up' })
+keymap('v', '<C-j>', ':m \'>+1<CR>gv=gv', { desc = 'move text down', silent = true })
+keymap('v', '<C-k>', ':m \'<-2<CR>gv=gv', { desc = 'move text up', silent = true })
 
 -- Append next line without moving cursor
-keymap('n', 'J', 'mzJ`z', { desc = 'append next line' })
+keymap('n', 'J', 'mzJ`z', { desc = 'append next line', silent = true })
 
 -- Move half page around keeping cursor in the middle
-keymap('n', '<C-d>', '<C-d>zz', { desc = 'move cursor half page down' })
-keymap('n', '<C-u>', '<C-u>zz', { desc = 'move cursor half page up' })
+keymap('n', '<C-d>', '<C-d>zz', { desc = 'move cursor half page down', silent = true })
+keymap('n', '<C-u>', '<C-u>zz', { desc = 'move cursor half page up', silent = true })
 
 -- Next search term kepping cursor in the middle
-keymap('n', 'n', 'nzzzv', { desc = 'next search term' })
-keymap('n', 'N', 'Nzzzv', { desc = 'next search term' })
+keymap('n', 'n', 'nzzzv', { desc = 'next search term', silent = true })
+keymap('n', 'N', 'Nzzzv', { desc = 'next search term', silent = true })
 
 -- delete without yanking
-keymap({'n', 'v' }, 'd', '"_d', { desc = 'delete without yanking' })
-keymap({'n', 'v' }, '<leader>d', 'd', { desc = 'delete' })
+keymap({'n', 'v' }, 'd', '"_d', { desc = 'delete without yanking', silent = true })
+keymap({'n', 'v' }, '<leader>d', 'd', { desc = 'delete', silent = true })
 
 -- Paste without losing yanked text
-keymap('x', 'p', 'P', { desc = 'paste without yanking' })
-keymap('x', '<leader>p', 'p', { desc = 'paste' })
+keymap('x', 'p', 'P', { desc = 'paste without yanking', silent = true })
+keymap('x', '<leader>p', 'p', { desc = 'paste', silent = true })
 
 -- allow multiple indentations 
-keymap('v', '<', '<gv', { desc = 'indent left' })
-keymap('v', '>', '>gv', { desc = 'indent right' })
+keymap('v', '<', '<gv', { desc = 'indent left', silent = true })
+keymap('v', '>', '>gv', { desc = 'indent right', silent = true })
 
 --disable search highlight
 keymap('n', '<leader>n', vim.cmd.nohlsearch, { desc = 'disable search highlight' })
