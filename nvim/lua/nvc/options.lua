@@ -17,14 +17,14 @@ local options = {
 
   -- show popup menu and don't auto select
   completeopt = 'menuone,noselect',
-  -- Enable indent at wrapped lines 
+  -- Enable indent at wrapped lines
   breakindent = true,
   -- enable mouse support
   mouse = 'a',
   -- line reserved for commands
   -- cmdheight = 1
   -- update current directory based on the opened file
-  -- autochdir = false 
+  -- autochdir = false
   -- read changes to file automatically
   autoread = true,
   -- 0-never, 1-more than two windows, 2-always, 3-only the last
@@ -73,4 +73,3 @@ local options = {
 for option, value in pairs(options) do
   vim.opt[option] = value
 end
-

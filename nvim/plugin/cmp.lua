@@ -9,47 +9,45 @@ if isModuleAvailable('nvim-autopairs') then
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
-cmp.setup ({
+cmp.setup {
   history = true,
   updateevents = 'TextChanged,TextChangedI',
   formatting = {
-    format = lspkind.cmp_format({
+    format = lspkind.cmp_format {
       mode = 'symbol',
       maxwidth = 50,
       ellipsis_char = '…',
-    }),
+    },
   },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert(
-    require('nvc.keymaps').cmp()
-  ),
+  mapping = cmp.mapping.preset.insert(require('nvc.keymaps').cmp()),
   sources = {
-    { name = 'luasnip', option = { show_autosnippets = true }},
+    { name = 'luasnip',  option = { show_autosnippets = true } },
     { name = 'nvim_lsp', keyword_length = 3 },
     -- { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'rg' }
+    { name = 'rg' },
   },
-})
+}
 
 cmp.setup.filetype('lua', {
   sources = cmp.config.sources {
     { name = 'nvim_lua' },
-    { name = 'luasnip', option = { show_autosnippets = true }},
-    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'luasnip',                 option = { show_autosnippets = true } },
+    { name = 'nvim_lsp',                keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'rg' }
+    { name = 'rg' },
   },
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load()
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -72,4 +70,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline_history' },
   },
 })
-

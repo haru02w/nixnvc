@@ -12,4 +12,5 @@ function isModuleAvailable(name)
     return false
   end
 end
+
 require('nvc')

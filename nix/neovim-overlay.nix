@@ -1,5 +1,7 @@
-{inputs}: final: prev:
-with final.pkgs.lib; let
+{ inputs }:
+final: prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from an input
@@ -9,25 +11,26 @@ with final.pkgs.lib; let
       version = src.lastModifiedDate;
     };
 
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
+  mkNeovim = pkgs.callPackage ./mkNeovim.nix { };
 
   all-plugins = with pkgs.vimPlugins; [
     # UI
-    tokyonight-nvim #theme
-    lualine-nvim #statusline
+    tokyonight-nvim # theme
+    lualine-nvim # statusline
     # required by oil.nvim
-    nvim-web-devicons #icons
+    nvim-web-devicons # icons
     dressing-nvim # cool ui
     noice-nvim # cool cmdline and notifications
 
     # syntax highlighting, LSP, CMP, DAP
-    nvim-treesitter.withAllGrammars
-    nvim-lspconfig
-    nvim-cmp
-    luasnip
-    friendly-snippets
+    nvim-treesitter.withAllGrammars # Treesitter
+    nvim-lspconfig # LSP
+    none-ls-nvim # Linter and Formatter
+    nvim-cmp # CMP
+    luasnip # snippets
+    friendly-snippets # snippets
+    lspkind-nvim # icons
     cmp_luasnip
-    lspkind-nvim
     cmp-nvim-lsp
     # cmp-nvim-lsp-signature-help
     cmp-buffer
@@ -39,13 +42,14 @@ with final.pkgs.lib; let
 
     # UTILS
     smart-splits-nvim # manage splits easily
-    (mkNvimPlugin inputs.buffer_manager-nvim 
+    (mkNvimPlugin inputs.buffer_manager-nvim
       "buffer_manager.nvim") # manage buffers
     which-key-nvim # see defined mappings
     eyeliner-nvim # highlight 'f'-key search
     nvim-spectre # a powerful search replace
     undotree # build a tree out of history
-    telescope-nvim telescope-fzf-native-nvim # fuzzy finder 
+    telescope-nvim
+    telescope-fzf-native-nvim # fuzzy finder
     presence-nvim # discord rich presence
     vim-be-good # game to train nvim
     guess-indent-nvim # set indent options automatically
@@ -59,7 +63,7 @@ with final.pkgs.lib; let
 
     # LIBS
     # required by: buffer_manager, telescope
-    plenary-nvim 
+    plenary-nvim
     # required by: noice
     nui-nvim
   ];
@@ -71,6 +75,11 @@ with final.pkgs.lib; let
     clang-tools # c/c++
     nodePackages.pyright # python
 
+    # formatters:
+    stylua # lua
+    nixfmt # nix
+
+    # extra:
     fzf
     ripgrep
   ];
