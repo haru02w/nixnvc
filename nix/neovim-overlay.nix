@@ -20,12 +20,10 @@ with final.pkgs.lib; let
     dressing-nvim # cool ui
     noice-nvim # cool cmdline and notifications
 
-    # CORE
+    # syntax highlighting, LSP, CMP, DAP
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     nvim-cmp
-
-    # COMPLETION PLUGINS
     luasnip
     friendly-snippets
     cmp_luasnip
