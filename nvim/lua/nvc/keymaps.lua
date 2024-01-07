@@ -30,8 +30,7 @@ keymap('n', 'n', 'nzzzv', { desc = 'next search term', silent = true })
 keymap('n', 'N', 'Nzzzv', { desc = 'next search term', silent = true })
 
 -- delete without yanking
-keymap({ 'n', 'v' }, 'd', '"_d', { desc = 'delete without yanking', silent = true })
-keymap({ 'n', 'v' }, '<leader>d', 'd', { desc = 'delete', silent = true })
+keymap({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete without yanking', silent = true })
 
 -- Paste without losing yanked text
 keymap('x', 'p', 'P', { desc = 'paste without yanking', silent = true })
@@ -43,6 +42,11 @@ keymap('v', '>', '>gv', { desc = 'indent right', silent = true })
 
 --disable search highlight
 keymap('n', '<leader>n', vim.cmd.nohlsearch, { desc = 'disable search highlight' })
+
+keymap('x',
+  "n",
+  [[:<c-u>let temp_variable=@"<CR>gvy:<c-u>let @/='\V<C-R>=escape(@",'/\')<CR>'<CR>:let @"=temp_variable<CR>]],
+  {silent = true})
 
 function M.buffer_manager()
   -- Navigate buffers bypassing the menu

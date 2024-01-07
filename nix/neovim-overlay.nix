@@ -21,6 +21,7 @@ let
     nvim-web-devicons # icons
     dressing-nvim # cool ui
     noice-nvim # cool cmdline and notifications
+    nvim-colorizer-lua # preview colors in hex
 
     # syntax highlighting, LSP, CMP, DAP
     nvim-treesitter.withAllGrammars # Treesitter
@@ -41,6 +42,7 @@ let
     cmp-cmdline-history
 
     # UTILS
+    hardtime-nvim
     smart-splits-nvim # manage splits easily
     (mkNvimPlugin inputs.buffer_manager-nvim
       "buffer_manager.nvim") # manage buffers
