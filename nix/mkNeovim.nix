@@ -71,8 +71,7 @@ with lib;
       '';
 
       installPhase = ''
-        cp -r after $out/after
-        rm -r after
+        mv after $out
         cp -r lua $out/lua
         rm -r lua
         cp -r * $out/nvim
