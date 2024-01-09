@@ -53,6 +53,7 @@ let
     telescope-nvim
     telescope-fzf-native-nvim # fuzzy finder
     presence-nvim # discord rich presence
+    better-escape-nvim # jk escape
     vim-be-good # game to train nvim
     guess-indent-nvim # set indent options automatically
     indent-blankline-nvim # nice lines at indent spaces
