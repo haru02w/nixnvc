@@ -4,5 +4,6 @@ null_ls.setup {
   sources = {
     formatting.stylua.with { extra_args = { '--quote-style', 'ForceSingle' } },
     formatting.nixfmt,
+    formatting.black,
   },
 }

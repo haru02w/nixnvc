@@ -80,6 +80,7 @@ let
 
     # formatters:
     stylua # lua
+    black # python
     nixfmt # nix
 
     # extra:
