@@ -43,10 +43,12 @@ keymap('v', '>', '>gv', { desc = 'indent right', silent = true })
 --disable search highlight
 keymap('n', '<leader>n', vim.cmd.nohlsearch, { desc = 'disable search highlight' })
 
-keymap('x',
-  "n",
+keymap(
+  'x',
+  'n',
   [[:<c-u>let temp_variable=@"<CR>gvy:<c-u>let @/='\V<C-R>=escape(@",'/\')<CR>'<CR>:let @"=temp_variable<CR>]],
-  {silent = true})
+  { silent = true }
+)
 
 function M.buffer_manager()
   -- Navigate buffers bypassing the menu
@@ -144,7 +146,7 @@ function M.todo_comments()
 end
 
 function M.oil()
-  keymap('n', '-', vim.cmd.Oil, { desc = 'Open file manager' })
+  keymap('n', '-', '<cmd>Oil<CR>', { desc = 'Open file manager' })
   return {
     ['<Esc>'] = 'actions.close',
     ['q'] = 'actions.close',
