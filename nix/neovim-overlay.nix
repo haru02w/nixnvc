@@ -30,6 +30,8 @@ let
     nvim-cmp # CMP
     luasnip # snippets
     friendly-snippets # snippets
+    (mkNvimPlugin inputs.luasnip-latex-snippets-nvim
+      "luasnip-latex-snippets.nvim") # manage latex snippets
     lspkind-nvim # icons
     cmp_luasnip
     cmp-nvim-lsp

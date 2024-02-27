@@ -26,7 +26,7 @@ cmp.setup {
   },
   mapping = cmp.mapping.preset.insert(require('nvc.keymaps').cmp()),
   sources = {
-    { name = 'luasnip',  option = { show_autosnippets = true } },
+    { name = 'luasnip', option = { show_autosnippets = true } },
     { name = 'nvim_lsp', keyword_length = 3 },
     -- { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
@@ -38,8 +38,8 @@ cmp.setup {
 cmp.setup.filetype('lua', {
   sources = cmp.config.sources {
     { name = 'nvim_lua' },
-    { name = 'luasnip',                 option = { show_autosnippets = true } },
-    { name = 'nvim_lsp',                keyword_length = 3 },
+    { name = 'luasnip', option = { show_autosnippets = true } },
+    { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
@@ -48,6 +48,10 @@ cmp.setup.filetype('lua', {
 })
 
 require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip-latex-snippets').setup({
+  use_treesitter = true,
+  allow_on_markdown = true,
+})
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {

@@ -15,6 +15,10 @@
       url = "github:j-morano/buffer_manager.nvim";
       flake = false;
     };
+    luasnip-latex-snippets-nvim = {
+      url = "github:iurimateus/luasnip-latex-snippets.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
