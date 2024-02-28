@@ -246,4 +246,10 @@ function M.cmp()
   }
 end
 
+function M.nabla()
+  local nabla = require('nabla')
+  keymap('n', '<leader>m', nabla.popup, { desc = 'enable math popup' })
+  keymap('n', '<leader>M', nabla.toggle_virt, { desc = 'enable math mode' })
+end
+
 return M
