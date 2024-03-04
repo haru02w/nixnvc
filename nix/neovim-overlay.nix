@@ -82,6 +82,7 @@ let
     nodePackages.pyright # python
 
     # formatters:
+    mdformat
     stylua # lua
     black # python
     nixfmt # nix
