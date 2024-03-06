@@ -48,10 +48,6 @@ cmp.setup.filetype('lua', {
 })
 
 require('luasnip.loaders.from_vscode').lazy_load()
-require('luasnip-latex-snippets').setup({
-  use_treesitter = true,
-  allow_on_markdown = true,
-})
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {

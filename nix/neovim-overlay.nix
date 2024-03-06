@@ -26,13 +26,11 @@ let
     # syntax highlighting, LSP, CMP, DAP
     nvim-treesitter.withAllGrammars # Treesitter
     nvim-lspconfig # LSP
+    markdown-preview-nvim # preview markdown files
     none-ls-nvim # Linter and Formatter
     nvim-cmp # CMP
     luasnip # snippets
     friendly-snippets # snippets
-    (mkNvimPlugin inputs.luasnip-latex-snippets-nvim
-      "luasnip-latex-snippets.nvim") # manage latex snippets
-    nabla-nvim
     lspkind-nvim # icons
     cmp_luasnip
     cmp-nvim-lsp
@@ -80,6 +78,7 @@ let
     lua-language-server # lua
     clang-tools # c/c++
     nodePackages.pyright # python
+    nodePackages.npm
 
     # formatters:
     mdformat
