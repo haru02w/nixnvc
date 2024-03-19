@@ -202,21 +202,31 @@ function M.cmp()
     },
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-n>'] = cmp.mapping(function(fallback)
+    ['<C-d>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item{ behavior = cmp.SelectBehavior.Select }
-      elseif luasnip.expand_or_locally_jumpable() then
+        cmp.select_next_item { behavior = cmp.SelectBehavior.Replace }
+      else
+        fallback()
+      end
+    end),
+    ['<C-u>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item { behavior = cmp.SelectBehavior.Replace }
+      else
+        fallback()
+      end
+    end),
+    ['<C-n>'] = cmp.mapping(function(fallback)
+      -- expand_or_jumpable(): Jump outside the snippet region
+      -- expand_or_locally_jumpable(): Only jump inside the snippet region
+      if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
-        -- expand_or_jumpable(): Jump outside the snippet region
-        -- expand_or_locally_jumpable(): Only jump inside the snippet region
       else
         fallback()
       end
     end, { 'i', 'c', 's' }),
     ['<C-p>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item{ behavior = cmp.SelectBehavior.Select }
-      elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
