@@ -208,28 +208,22 @@ function M.cmp()
       else
         fallback()
       end
-    end),
+    end, { 'i', 'c', 's' }),
     ['<C-u>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item { behavior = cmp.SelectBehavior.Replace }
       else
         fallback()
       end
-    end),
-    ['<C-n>'] = cmp.mapping(function(fallback)
-      -- expand_or_jumpable(): Jump outside the snippet region
-      -- expand_or_locally_jumpable(): Only jump inside the snippet region
-      if luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
+    end, { 'i', 'c', 's' }),
+    ['<C-n>'] = cmp.mapping(function()
+      if luasnip.jumpable(1) and luasnip.in_snippet() then
+        luasnip.jump(1)
       end
     end, { 'i', 'c', 's' }),
-    ['<C-p>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(-1) then
+    ['<C-p>'] = cmp.mapping(function()
+      if luasnip.jumpable(-1) and luasnip.in_snippet() then
         luasnip.jump(-1)
-      else
-        fallback()
       end
     end, { 'i', 'c', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
