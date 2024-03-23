@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
@@ -34,15 +33,11 @@
 
       # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-      # stable branch overlay
-      nixpkgs-stable =
-        import ./nix/stable-nixpkgs-overlay.nix { inherit inputs; };
     in flake-utils.lib.eachSystem supportedSystems (system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays =
-            [ nixpkgs-stable inputs.neovim-nightly.overlay neovim-overlay ];
+          overlays = [ inputs.neovim-nightly.overlay neovim-overlay ];
         };
         shell = pkgs.mkShell {
           name = "nvim-devShell";

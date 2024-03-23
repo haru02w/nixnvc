@@ -78,10 +78,11 @@ let
 
   extraPackages = with pkgs; [
     # language servers:
-    nixpkgs-stable.pylyzer # python
     nil # nix
-    clang-tools # c/c++
     lua-language-server # lua
+    clang-tools # c/c++
+    nodePackages.pyright # python
+    nodePackages.npm
 
     # formatters:
     mdformat
