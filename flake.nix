@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
@@ -19,6 +20,10 @@
       url = "github:iurimateus/luasnip-latex-snippets.nvim";
       flake = false;
     };
+    inlay-hints-nvim = {
+      url = "github:MysticalDevil/inlay-hints.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -32,7 +37,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ neovim-overlay ];
+          overlays = [ inputs.neovim-nightly.overlay neovim-overlay ];
         };
         shell = pkgs.mkShell {
           name = "nvim-devShell";
@@ -53,4 +58,10 @@
         # You can add this overlay to your NixOS configuration
         overlays.default = neovim-overlay;
       };
+  nixConfig = {
+    extra-substituters = [ "https://nix-community.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 }

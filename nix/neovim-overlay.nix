@@ -26,6 +26,8 @@ let
     # syntax highlighting, LSP, CMP, DAP
     nvim-treesitter.withAllGrammars # Treesitter
     nvim-lspconfig # LSP
+    (mkNvimPlugin inputs.inlay-hints-nvim
+      "inlay-hints.nvim") # manage latex snippets
     markdown-preview-nvim # preview markdown files
     none-ls-nvim # Linter and Formatter
     nvim-cmp # CMP
