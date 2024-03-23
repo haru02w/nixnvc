@@ -1,3 +1,4 @@
+## WARNING: using neovim nightly
 ## References
 
 - [`kickstart-nix.nvim`](https://github.com/mrcjkb/kickstart-nix.nvim):
