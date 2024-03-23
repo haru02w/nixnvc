@@ -90,9 +90,6 @@ let
     black # python
     nixfmt # nix
 
-    # linters:
-    pylint
-
     # extra:
     fzf
     ripgrep
