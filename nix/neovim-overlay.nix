@@ -45,6 +45,8 @@ let
     cmp-nvim-lua # neovim lua API completion
     cmp-cmdline
     cmp-cmdline-history
+    nvim-dap
+    nvim-dap-ui
 
     # UTILS
     hardtime-nvim

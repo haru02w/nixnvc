@@ -37,7 +37,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ inputs.neovim-nightly.overlay neovim-overlay ];
+          overlays = [ inputs.neovim-nightly.overlays.default neovim-overlay ];
         };
         shell = pkgs.mkShell {
           name = "nvim-devShell";

@@ -250,4 +250,23 @@ function M.cmp()
   }
 end
 
+function M.dap()
+  local dap, dapui = require('dap'), require('dapui')
+
+  keymap('n', '<F3>', dapui.toggle, { desc = 'toggle dap ui' })
+
+  keymap('n', '<F5>', dap.continue, { desc = 'debug: continue program' })
+  keymap('n', '<F17>', dap.terminate, { desc = 'debug: stop program' }) -- Shift + F5
+  keymap('n', '<F29>', dap.restart_frame, { desc = 'debug: restart program' }) -- Control + F5
+
+  keymap('n', '<F6>', dap.pause, { desc = 'debug: pause program' })
+  keymap('n', '<F9>', dap.toggle_breakpoint, { desc = 'debug: toggle breakpoint' })
+  keymap('n', '<F21>', function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+  end, { desc = 'debug: Conditional breakpoint' }) -- Shift + F9
+  keymap('n', '<F10>', dap.step_over, { desc = 'debug: step over' })
+  keymap('n', '<F11>', dap.step_into, { desc = 'debug: step into' })
+  keymap('n', '<F23>', dap.step_out, { desc = 'debug: step out' }) -- Shift + F11
+end
+
 return M
