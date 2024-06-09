@@ -83,6 +83,7 @@ let
     nil # nix
     lua-language-server # lua
     clang-tools # c/c++
+    rust-analyzer # rust
     nodePackages.pyright # python
     nodePackages.npm
 
