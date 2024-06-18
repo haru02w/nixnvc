@@ -84,7 +84,7 @@ let
     lua-language-server # lua
     clang-tools # c/c++
     rust-analyzer # rust
-    nodePackages.pyright # python
+    pyright # python
     nodePackages.npm
 
     # formatters:
